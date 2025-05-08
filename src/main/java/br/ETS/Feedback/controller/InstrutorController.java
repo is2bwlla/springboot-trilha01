@@ -1,5 +1,6 @@
 package br.ETS.Feedback.controller;
 
+import br.ETS.Feedback.instrutor.Instrutor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
