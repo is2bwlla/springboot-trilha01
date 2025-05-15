@@ -29,6 +29,7 @@ public class Instrutor {
         this.email = dadosInstrutor.email();
         this.edv = dadosInstrutor.edv();
         this.curso = dadosInstrutor.curso();
+        this.informacoes = new Informacoes(dadosInstrutor.dadosInformacoes());
     }
 
 }
