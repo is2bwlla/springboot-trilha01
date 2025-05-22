@@ -3,6 +3,7 @@ package br.ETS.Feedback.controller;
 import br.ETS.Feedback.instrutor.DadosInstrutor;
 import br.ETS.Feedback.instrutor.Instrutor;
 import br.ETS.Feedback.instrutor.InstrutorRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class InstrutorController {
     private InstrutorRepository repository;
 
     @PostMapping
-    public void cadastrar(@RequestBody DadosInstrutor dadosInstrutor) {
+    public void cadastrar(@RequestBody @Valid DadosInstrutor dadosInstrutor) {
         System.out.println(dadosInstrutor);
         repository.save(new Instrutor(dadosInstrutor));
     }

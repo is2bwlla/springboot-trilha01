@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity (name = "Instrutor")
-@Table (name = "tbInstrutores")
+@Table (name = "tbinstrutores")
 public class Instrutor {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -24,12 +24,14 @@ public class Instrutor {
     @Embedded
     private Informacoes informacoes;
 
+    private Boolean ferias;
+
     public Instrutor (DadosInstrutor dadosInstrutor) {
         this.nome = dadosInstrutor.nome();
         this.email = dadosInstrutor.email();
         this.edv = dadosInstrutor.edv();
         this.curso = dadosInstrutor.curso();
-        this.informacoes = new Informacoes(dadosInstrutor.dadosInformacoes());
+        this.informacoes = new Informacoes(dadosInstrutor.informacoes());
+        this.ferias = dadosInstrutor.ferias();
     }
-
 }

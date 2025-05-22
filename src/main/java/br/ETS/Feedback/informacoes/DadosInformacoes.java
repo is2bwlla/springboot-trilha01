@@ -1,9 +1,9 @@
 package br.ETS.Feedback.informacoes;
 
-import br.ETS.Feedback.instrutor.Curso;
+import jakarta.validation.constraints.NotBlank;
 
-public record DadosInformacoes(String disciplina,
-                               String trilha,
-                               String faculdade,
-                               String turma) {
+public record DadosInformacoes(@NotBlank String disciplina,
+                               @NotBlank String trilha,
+                               @NotBlank String faculdade,
+                               @NotBlank String turma) {
 }
