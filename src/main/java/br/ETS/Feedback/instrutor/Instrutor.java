@@ -1,5 +1,6 @@
 package br.ETS.Feedback.instrutor;
 
+import br.ETS.Feedback.informacoes.DadosInformacoes;
 import br.ETS.Feedback.informacoes.Informacoes;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,15 +24,42 @@ public class Instrutor {
 
     @Embedded
     private Informacoes informacoes;
+    private Boolean ativo;
 
     private Boolean ferias;
 
-    public Instrutor (DadosInstrutor dadosInstrutor) {
-        this.nome = dadosInstrutor.nome();
-        this.email = dadosInstrutor.email();
-        this.edv = dadosInstrutor.edv();
-        this.curso = dadosInstrutor.curso();
-        this.informacoes = new Informacoes(dadosInstrutor.informacoes());
-        this.ferias = dadosInstrutor.ferias();
+    public Instrutor (DadosCadastroInstrutor dadosCadastroInstrutor) {
+        this.nome = dadosCadastroInstrutor.nome();
+        this.email = dadosCadastroInstrutor.email();
+        this.edv = dadosCadastroInstrutor.edv();
+        this.curso = dadosCadastroInstrutor.curso();
+        this.informacoes = new Informacoes(dadosCadastroInstrutor.informacoes());
+        this.ferias = dadosCadastroInstrutor.ferias();
+        this.ativo = true;
+    }
+
+    public void atualizar(DadosAtualizacaoInstrutor dadosAtualizacaoInstrutor) {
+        if (dadosAtualizacaoInstrutor.nome() !=null) {
+            this.nome = dadosAtualizacaoInstrutor.nome();
+        }
+        if (dadosAtualizacaoInstrutor.email() !=null) {
+            this.email = dadosAtualizacaoInstrutor.email();
+        }
+        if (dadosAtualizacaoInstrutor.edv() !=null) {
+            this.edv = dadosAtualizacaoInstrutor.edv();
+        }
+        if (dadosAtualizacaoInstrutor.curso() !=null) {
+            this.curso = dadosAtualizacaoInstrutor.curso();
+        }
+        if (dadosAtualizacaoInstrutor.ferias() !=null) {
+            this.ferias = dadosAtualizacaoInstrutor.ferias();
+        }
+        if (dadosAtualizacaoInstrutor.informacoes() !=null) {
+            this.informacoes.atualizar(dadosAtualizacaoInstrutor.informacoes());
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }
