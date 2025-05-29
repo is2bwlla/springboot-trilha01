@@ -1,4 +1,4 @@
-package br.ETS.Feedback.instrutor;
+package br.ETS.Feedback.model.instrutor;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

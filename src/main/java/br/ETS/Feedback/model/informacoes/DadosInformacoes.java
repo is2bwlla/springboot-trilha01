@@ -1,4 +1,4 @@
-package br.ETS.Feedback.informacoes;
+package br.ETS.Feedback.model.informacoes;
 
 import jakarta.validation.constraints.NotBlank;
 

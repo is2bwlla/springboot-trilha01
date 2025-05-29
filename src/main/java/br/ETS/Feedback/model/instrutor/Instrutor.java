@@ -1,7 +1,6 @@
-package br.ETS.Feedback.instrutor;
+package br.ETS.Feedback.model.instrutor;
 
-import br.ETS.Feedback.informacoes.DadosInformacoes;
-import br.ETS.Feedback.informacoes.Informacoes;
+import br.ETS.Feedback.model.informacoes.Informacoes;
 import jakarta.persistence.*;
 import lombok.*;
 

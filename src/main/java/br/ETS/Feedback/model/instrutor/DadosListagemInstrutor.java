@@ -1,4 +1,4 @@
-package br.ETS.Feedback.instrutor;
+package br.ETS.Feedback.model.instrutor;
 
 public record DadosListagemInstrutor(String nome,
                                      String email,

@@ -1,8 +1,6 @@
-package br.ETS.Feedback.informacoes;
+package br.ETS.Feedback.model.informacoes;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.*;
 
 @Getter

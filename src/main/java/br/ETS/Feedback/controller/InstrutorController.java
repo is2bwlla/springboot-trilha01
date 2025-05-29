@@ -1,17 +1,15 @@
 package br.ETS.Feedback.controller;
 
-import br.ETS.Feedback.instrutor.*;
+import br.ETS.Feedback.model.informacoes.DadosInformacoesCompletasDoInstrutor;
+import br.ETS.Feedback.model.instrutor.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-
-import java.util.List;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping ("/instrutor")
@@ -21,8 +19,11 @@ public class InstrutorController {
     private InstrutorRepository repository;
 
     @PostMapping
-    public void cadastrar(@RequestBody @Valid DadosCadastroInstrutor dadosCadastroInstrutor) {
-        repository.save(new Instrutor(dadosCadastroInstrutor));
+    public ResponseEntity<DadosListagemInstrutor> cadastrar(@RequestBody @Valid DadosCadastroInstrutor dadosCadastroInstrutor, UriComponentsBuilder uriComponentsBuilder) {
+        var instrutor = new Instrutor(dadosCadastroInstrutor);
+        repository.save(instrutor);
+        var uri = uriComponentsBuilder.path("/instrutor/{id}").buildAndExpand(instrutor.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DadosListagemInstrutor(instrutor));
     }
 
     @GetMapping
@@ -45,5 +46,12 @@ public class InstrutorController {
         var instrutor = repository.getReferenceById(id);
         instrutor.excluir();
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DadosInformacoesCompletasDoInstrutor> datalharInstrutor(@PathVariable int id) {
+        var instrutor = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosInformacoesCompletasDoInstrutor(instrutor));
     }
 }
